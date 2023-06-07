@@ -34,30 +34,32 @@ psi0 = np.kron(posn0, coin0);  # initial state |0>
 
 psiN = np.linalg.matrix_power(U, n).dot(psi0);
 
-prob1 = np.empty(p);
+prob = np.empty(p);
 for k in range(p):
     posn = np.zeros(p);
     posn[k] = 1;
     M_hat_k = np.kron(np.outer(posn, posn), np.eye(2));
     proj = M_hat_k.dot(psiN);
-    prob1[k] = proj.dot(proj.conjugate()).real;
+    prob[k] = proj.dot(proj.conjugate()).real;
 
 
-xval = np.arange(p)
+xval = np.arange(-p/2,p/2)
 # Begin plotting the graph
 fig = plt.figure() # Create an overall figure
 ax = fig.add_subplot(111) # Add a 3D plot
 
 # NOTE: Only plots non-zero values
-ax.plot(xval[np.where(prob1 != 0)], prob1[np.where(prob1 != 0)], linewidth=1, color='r') # Plot the data
-ax.plot(xval[np.where(prob1 != 0)], prob1[np.where(prob1 != 0)], 'o', markersize= 3, color='blue') # Plot the data
-loc = range (0, p, int(p / 10)) #Location of ticks
-plt.xticks(loc) # Set the x axis ticks
-plt.xlim(0, p) # Set the limits of the x axis
-ax.set_xticklabels(range (-n, n+1, int(p / 10))) # Set the labels of the x axis
-plt.xlabel("Position") # Set x label
-plt.ylabel("Probability") # Set y label
-ax.set_title('Quantum Walk')
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='r') # Plot the data
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3, color='blue') # Plot the data
 
-plt.savefig('qw_instate0', dpi=720)
+print(xval, prob)
+# loc = range (0, p, int(p / 10)) #Location of ticks
+# plt.xticks(loc) # Set the x axis ticks
+# plt.xlim(0, p) # Set the limits of the x axis
+# ax.set_xticklabels(range (-n, n+1, int(p / 10))) # Set the labels of the x axis
+plt.xlabel("Position"); # Set x label
+plt.ylabel("Probability"); # Set y label
+ax.set_title('Quantum Walk');
+
+plt.savefig('Images/qw_instate0', dpi=720);
 plt.show() # Show the graph

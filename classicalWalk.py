@@ -43,5 +43,5 @@ ax.set_title('Classical Walk')
 
 # ax.set_xticks(np.linspace(0, p - 1, 11));
 # ax.set_yticks(np.linspace(-n, n, 11, dtype=int));
-plt.savefig('plot2', dpi=720);
+plt.savefig('Images/classicalWalk', dpi=720);
 plt.show();

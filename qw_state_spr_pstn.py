@@ -61,5 +61,5 @@ plt.xlabel("Position") # Set x label
 plt.ylabel("Probability") # Set y label
 ax.set_title('Quantum Walk')
 
-plt.savefig('qw_instatespr_pstn', dpi=720)
+plt.savefig('Images/qw_instate_spr_pstn', dpi=720)
 plt.show() # Show the graph
