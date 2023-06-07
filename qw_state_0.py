@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jun  1 15:17:13 2023
+
+@author: Rico
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -24,7 +30,6 @@ posn0 = np.zeros(p);
 
 posn0[n] = 1;  # array indexing starts from 0, so index N is the central posn
 
-# psi0 = kron(posn0, (coin0+coin1*1j)/sqrt(2.)); #initial state superposition of zero and one
 psi0 = np.kron(posn0, coin0);  # initial state |0>
 
 psiN = np.linalg.matrix_power(U, n).dot(psi0);
@@ -37,7 +42,7 @@ for k in range(p):
     proj = M_hat_k.dot(psiN);
     prob1[k] = proj.dot(proj.conjugate()).real;
 
-# prob1 = prob1[prob1 != 0];
+
 xval = np.arange(p)
 # Begin plotting the graph
 fig = plt.figure() # Create an overall figure
@@ -54,5 +59,5 @@ plt.xlabel("Position") # Set x label
 plt.ylabel("Probability") # Set y label
 ax.set_title('Quantum Walk')
 
-plt.savefig('plot1', dpi=720)
+plt.savefig('qw_instate0', dpi=720)
 plt.show() # Show the graph
