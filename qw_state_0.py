@@ -43,14 +43,16 @@ for k in range(p):
     prob[k] = proj.dot(proj.conjugate()).real;
 
 
-xval = np.arange(-p/2,p/2)
+
 # Begin plotting the graph
-fig = plt.figure() # Create an overall figure
-ax = fig.add_subplot(111) # Add a 3D plot
+fig = plt.figure(); # Create an overall figure
+ax = fig.add_subplot(111); # Add a 3D plot
+
+xval = np.arange(-p/2,p/2);
 
 # NOTE: Only plots non-zero values
-ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='r') # Plot the data
-ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3, color='blue') # Plot the data
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='r'); # Plot the data
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3, color='blue'); # Plot the data
 
 print(xval, prob)
 # loc = range (0, p, int(p / 10)) #Location of ticks
@@ -62,4 +64,4 @@ plt.ylabel("Probability"); # Set y label
 ax.set_title('Quantum Walk');
 
 plt.savefig('Images/qw_instate0', dpi=720);
-plt.show() # Show the graph
+plt.show(); # Show the graph

@@ -23,17 +23,17 @@ for i in range(samples):
 # Probability Distribution
 prob = np.zeros(p);
 position, counts = np.unique(posF, return_counts=True);
-prob[position] = counts / float(samples)
-prob = np.concatenate([prob[n:], prob[:n]])
-print(position, prob)
+prob[position] = counts / float(samples);
+prob = np.concatenate([prob[n:], prob[:n]]);
+print(position, prob);
 
 # figure
 fig, ax = plt.subplots();
 
 xval= np.arange(-n,n+1);
 
-ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='r') # Plot the data
-ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'x', markersize= 3, color='blue') # Plot the data
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='r'); # Plot the data
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'x', markersize= 3, color='blue'); # Plot the data
 
 plt.xlabel("Position") # Set x label
 plt.ylabel("Probability") # Set y label

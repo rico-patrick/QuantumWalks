@@ -68,21 +68,20 @@ cprob = np.concatenate([cprob[n:], cprob[:n]])
 fig = plt.figure() # Create an overall figure
 ax = fig.add_subplot(111)
 
-cxval= np.arange(-n,n+1);
-xval = np.arange(-n,n+1);
+xval= np.arange(-n,n+1);
 
 """Classical"""
-ax.plot(cxval[np.where(cprob != 0)], cprob[np.where(cprob != 0)], linewidth=1, color='r', label='Classical')
-ax.plot(cxval[np.where(cprob != 0)], cprob[np.where(cprob != 0)], 'x', markersize= 3, color='black')
+ax.plot(xval[np.where(cprob != 0)], cprob[np.where(cprob != 0)], linewidth=1, color='r', label='Classical');
+ax.plot(xval[np.where(cprob != 0)], cprob[np.where(cprob != 0)], 'x', markersize= 3, color='black');
 
 """Quantum"""
-ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='g', label = 'Quantum')
-ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3, color='b')
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='g', label = 'Quantum');
+ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3, color='b');
 
 plt.xlabel("Position"); # Set x label
 plt.ylabel("Probability"); # Set y label
 ax.set_xlim(-n, n);
-plt.savefig('Images/integrated.png', dpi=720,bbox_inches='tight')
+plt.savefig('Images/integrated.png', dpi=720,bbox_inches='tight');
 plt.legend(loc='upper left');
 plt.tight_layout();
 plt.show();

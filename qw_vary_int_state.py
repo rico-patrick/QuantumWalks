@@ -13,10 +13,10 @@ p = 2 * n + 1;  # num of positions
 
 j= 1j;
 
-for theta in range(0, 2*180):
-    for phi in range(0, 4*180):
-        coin0 = np.array([np.cos(theta), 0]);  # |0>
-        coin1 = np.array([0, np.exp(j * phi) * np.sin(theta)])  # |1>
+for theta in range(0, int(2*180)):
+    for phi in range(0, int(4*180)):
+        coin0 = np.array([np.cos(np.radians(theta)), 0]);  # |0>
+        coin1 = np.array([0, np.exp(j * phi) * np.sin(np.radians(theta))])  # |1>
     
         C00 = np.outer(coin0, coin0);  # |0><0|
         C01 = np.outer(coin0, coin1);  # |0><1|
