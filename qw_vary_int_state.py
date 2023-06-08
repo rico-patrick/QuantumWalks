@@ -13,18 +13,20 @@ p = 2 * n + 1;  # num of positions
 
 j= 1j;
 
-for theta in range(0, int(2*180)):
-    for phi in range(0, int(4*180)):
-        coin0 = np.array([np.cos(np.radians(theta)), 0]);  # |0>
-        coin1 = np.array([0, np.exp(j * phi) * np.sin(np.radians(theta))])  # |1>
-    
-        C00 = np.outer(coin0, coin0);  # |0><0|
-        C01 = np.outer(coin0, coin1);  # |0><1|
-        C10 = np.outer(coin1, coin0);  # |1><0|
-        C11 = np.outer(coin1, coin1);  # |1><1|
-    
-        C_hat = (C00 + C01 + C10 - C11) / np.sqrt(2.);
-    
+d = 2 #dimension
+
+def grover(n):
+    return np.ones((d,d)) - 2*np.eye(d)/d
+
+for theta in range(0,360,30):
+    for phi in range(0,360,30):
+        coin0 = np.array([np.cos(np.radians(theta)), np.exp(j*np.radians(phi))*np.sin(np.radians(theta))]);  # |0>
+        #coin1 = np.array([np.sin(np.radians(theta)), np.exp(j * np.radians(phi)) * -np.cos(np.radians(theta))])  # |1>
+        
+        C_hat = np.array([[1,1],[1,-1]])/np.sqrt(2)
+        
+        C00 = np.outer([1,0],[1,0])
+        C11 = np.outer([0,1],[0,1])
         ShiftPlus = np.roll(np.eye(p), 1, axis=0);
         ShiftMinus = np.roll(np.eye(p), -1, axis=0);
         S_hat = np.kron(ShiftPlus, C00) + np.kron(ShiftMinus, C11);
@@ -36,7 +38,7 @@ for theta in range(0, int(2*180)):
         posn0[n] = 1;  # array indexing starts from 0, so index N is the central posn
         
         psi0 = np.kron(posn0, coin0);  # initial state |0>
-        
+        #print(np.det(U))
         psiN = np.linalg.matrix_power(U, n).dot(psi0);
         
         prob = np.empty(p);
@@ -57,7 +59,7 @@ for theta in range(0, int(2*180)):
         ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='r') # Plot the data
         ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3, color='blue') # Plot the data
         
-        print(xval, prob);
+        #print(xval, prob);
         plt.xlabel("Position"); # Set x label
         plt.ylabel("Probability"); # Set y label
         ax.set_title('Quantum Walk');

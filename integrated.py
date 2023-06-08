@@ -81,7 +81,7 @@ ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3
 plt.xlabel("Position"); # Set x label
 plt.ylabel("Probability"); # Set y label
 ax.set_xlim(-n, n);
-plt.savefig('Images/integrated.png', dpi=720,bbox_inches='tight');
 plt.legend(loc='upper left');
 plt.tight_layout();
+plt.savefig('Images/integrated.png', dpi=720,bbox_inches='tight');
 plt.show();
