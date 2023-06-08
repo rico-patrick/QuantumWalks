@@ -6,6 +6,8 @@ Created on Thu Jun  7 11:18:59 2023
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.stats
+
 
 n = 100;  # num of random steps
 p = 2 * n + 1;  # num of positions
@@ -74,5 +76,12 @@ std_dev = np.std(prob);
 
 print('Standard Deviation :{}'.format(std_dev));
 
+# Create a distribution
+
+
+# Calculate the skew
+skew = scipy.stats.skew(prob)
+
+print('Skew :{}'.format(skew));
 print ('Variance :{}'.format(np.var(prob)));
 
