@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 """
 Created on Wed Jun  1 15:17:13 2023
 
@@ -7,7 +7,7 @@ Created on Wed Jun  1 15:17:13 2023
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 100;  # num of random steps
+n = 2000;  # num of random steps
 p = 2 * n + 1;  # num of positions
 
 coin0 = np.array([1, 0]);  # |0>
@@ -48,7 +48,7 @@ for k in range(p):
 fig = plt.figure(); # Create an overall figure
 ax = fig.add_subplot(111); # Add a 3D plot
 
-xval = np.arange(-p/2,p/2);
+xval = np.arange(-n, n+1);
 
 # NOTE: Only plots non-zero values
 ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='r'); # Plot the data

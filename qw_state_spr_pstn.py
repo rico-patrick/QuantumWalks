@@ -26,7 +26,7 @@ ShiftMinus = np.roll(np.eye(p), -1, axis=0);
 S_hat = np.kron(ShiftPlus, C00) + np.kron(ShiftMinus, C11);
 
 U = S_hat.dot(np.kron(np.eye(p), C_hat));
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 posn0 = np.zeros(p);
 
 posn0[n] = 1;  # array indexing starts from 0, so index N is the central posn

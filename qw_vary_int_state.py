@@ -8,7 +8,8 @@ Created on Wed Jun  6 17:52:03 2023
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 100;  # num of random steps
+
+n = 900;  # num of random steps
 p = 2 * n + 1;  # num of positions
 
 j= 1j;
@@ -50,7 +51,7 @@ for theta in range(0,360,30):
             prob[k] = proj.dot(proj.conjugate()).real;
         
         
-        xval = np.arange(-p/2,p/2)
+        xval = np.arange(-n, n+1)
         # Begin plotting the graph
         fig = plt.figure() # Create an overall figure
         ax = fig.add_subplot(111) # Add a 3D plot

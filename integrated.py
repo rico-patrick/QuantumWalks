@@ -6,6 +6,7 @@ Created on Wed Jun  1 15:17:13 2023
 import numpy as np
 import matplotlib.pyplot as plt
 
+j = 4;
 n = 100;  # num of random steps
 p = 2 * n + 1;  # num of positions
 
@@ -54,7 +55,7 @@ def probability():
     return cposIn;
 
 
-samples = 10000
+samples = 100000
 for i in range(samples):
     cposF.append(probability());
 
@@ -70,10 +71,12 @@ ax = fig.add_subplot(111)
 
 xval= np.arange(-n,n+1);
 
+
+
 """Classical"""
 ax.plot(xval[np.where(cprob != 0)], cprob[np.where(cprob != 0)], linewidth=1, color='r', label='Classical');
 ax.plot(xval[np.where(cprob != 0)], cprob[np.where(cprob != 0)], 'x', markersize= 3, color='black');
-
+                                                         
 """Quantum"""
 ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], linewidth=1, color='g', label = 'Quantum');
 ax.plot(xval[np.where(prob != 0)], prob[np.where(prob != 0)], 'o', markersize= 3, color='b');
@@ -83,5 +86,10 @@ plt.ylabel("Probability"); # Set y label
 ax.set_xlim(-n, n);
 plt.legend(loc='upper left');
 plt.tight_layout();
-plt.savefig('Images/integrated.png', dpi=720,bbox_inches='tight');
+
+plt.savefig('Images/combined{}.png'.format(j), dpi=720,bbox_inches='tight');
+
+ax.errorbar(xval[np.where(cprob != 0)], cprob[np.where(cprob != 0)], yerr=(np.std(cprob)/np.sqrt(samples)), fmt='o', capsize=.1)
+plt.savefig('Images/errorbar_v0{}.png'.format(j), dpi=1080,bbox_inches='tight');
+
 plt.show();
